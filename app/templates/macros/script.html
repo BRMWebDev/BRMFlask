@@ -1,0 +1,3 @@
+{%- macro defer(filename="my") -%}
+    <script defer src="{{ config.get('ASSET_PATH') }}/js/{{filename}}{{config.get('ASSET_SUFFIX')}}.js{{'?v={}'.format(config.get('VERSION')) if config.get('INCLUDE_VERSION')}}"></script>
+{%- endmacro -%}

@@ -1,0 +1,28 @@
+## Flask
+Flask
+Flask-Compress
+
+# Fork of flask_cache: https://github.com/brmullikin/flask-markdown
+# -e git+git://github.com/sh4nks/flask-cache.git
+
+# Fork of flask_markdown: https://github.com/sh4nks/flask-cache
+-e git+git://github.com/brmullikin/flask-markdown.git#egg=flask_markdown
+htmlmin
+Markdown
+coloredlogs
+smartypants
+dotenv
+
+# Application Server
+gunicorn
+eventlet
+
+###############################
+# Development & Testing Tools #
+###############################
+# pytest
+# flask_debugtoolbar
+# pytest-cov
+# pytest-flask
+# pep8
+# flake8-pep257

@@ -16,7 +16,7 @@ def test_env_load(client):
     assert load_env("file") == environ
 
 
-def test_app(app):
+def test_app(config, app):
     """
     Verify app loads correctly.
 
@@ -27,6 +27,6 @@ def test_app(app):
        app is instantiated.
     """
     assert not app.debug
-    assert app.config['BRMFLASK_CONFIG'] == "app.settings.LiveConfig"
-    assert app.config['BRMFLASK_TEST_KEY'] == "TEST_VALUE"
-    assert app.config['BRMFLASK_ENV_FILE'] == ".brm_env"
+    assert config['BRMFLASK_CONFIG'] == "app.settings.LiveConfig"
+    assert config['BRMFLASK_TEST_KEY'] == "TEST_VALUE"
+    assert config['BRMFLASK_ENV_FILE'] == ".brm_env"

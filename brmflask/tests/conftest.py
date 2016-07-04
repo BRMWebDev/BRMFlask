@@ -15,4 +15,8 @@ def app():
     }
 
     app = create_app(config_override=params)
+
+    # Inject test redirect routes
+    app.config['REDIRECTS'].update({'url/to/redirect': '/'})
+    app.config['REDIRECT_KEYS'].append('url/to/redirect')
     return app

@@ -3,7 +3,7 @@ Blueprint: dynamic.
 
 Renders a template based on the routes in the settings.
 """
-from flask import render_template, current_app, redirect, abort
+from flask import render_template, current_app, redirect, abort, request
 from . import dynamic
 from brmflask.utils.routing import route_exists, site_path
 from brmflask.utils.minify import minify_response
@@ -34,8 +34,6 @@ def router(path):
     :param path: <string> path
     :return: render_template object
     """
-    if path in current_app.config['REDIRECT_KEYS']:
-        return redirect(current_app.config['REDIRECTS'].get(path))
     route = route_exists(path)
     if route:
         return render_template(
@@ -43,3 +41,14 @@ def router(path):
         )
     else:
         abort(404)
+
+
+@dynamic.before_request
+def before_request():
+    """Redirect if path is found in config.['REDIRECT_KEYS']."""
+    path = request.path[1:]
+    if path in current_app.config['REDIRECT_KEYS']:
+        return redirect(
+            current_app.config['REDIRECTS'].get(path),
+            code=301
+        )

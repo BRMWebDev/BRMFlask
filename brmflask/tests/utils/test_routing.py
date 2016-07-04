@@ -2,7 +2,6 @@
 from brmflask.utils import routing
 from os import getcwd
 from os.path import join
-import sys
 
 
 def test_base_path():
@@ -19,7 +18,7 @@ def test_base_path():
     assert routing.base_path() == join(getcwd(), '')
 
 
-def test_template_path(app):
+def test_template_path(config, app):
     """
     Test if template_path joins correctly.
 
@@ -27,11 +26,11 @@ def test_template_path(app):
     """
     assert (
         routing.template_path('/some/path') ==
-        join(app.config['TEMPLATE_PATH'], '/some/path')
+        join(config['TEMPLATE_PATH'], '/some/path')
     )
 
 
-def test_site_path(app):
+def test_site_path(config, app):
     """
     Test if site_path joins correctly.
 
@@ -40,20 +39,20 @@ def test_site_path(app):
     assert (
         routing.site_path('/some/path') ==
         "{}/{}/{}".format(
-            app.config['TEMPLATE_PATH'],
-            app.config['SITE_FOLDER'],
+            config['TEMPLATE_PATH'],
+            config['SITE_FOLDER'],
             '/some/path'
         )
     )
 
 
-def test_route_exists(app):
+def test_route_exists(config, app):
     """Test route_exists function."""
     assert routing.route_exists('Some/fake/file') is None
-    app.config['ROUTES'].append('some/other/file')
-    assert 'some/other/file' in app.config['ROUTES']
+    config['ROUTES'].append('some/other/file')
+    assert 'some/other/file' in config['ROUTES']
     assert routing.route_exists('Some/other/file') is None
-    for r in app.config['ROUTES']:
+    for r in config['ROUTES']:
         routed = routing.route_exists(r)
         if routed is None:
             pass

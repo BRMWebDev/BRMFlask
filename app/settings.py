@@ -13,23 +13,8 @@ class DevConfig(BaseConfig):
 
     BASE_URI = 'http://'
     ASSET_SUFFIX = ''
-    SERVER_NAME = 'brmullikin.dissata.com:5000'
+    SERVER_NAME = 'brmflask.dissata.com:5000'
     HOSTNAME_LIST = [SERVER_NAME]
-    ASSET_BASE = 'http://brmullikin.dissata.com'
-    ASSET_PATH = '{}/heroku/brmullikin/static/dist'.format(ASSET_BASE)
-    DENY_ROBOTS = True
-
-
-class HerokuConfig(BaseConfig):
-    """HerokuConfig is a staging config."""
-
-    BASE_URI = 'http://'
-    ASSET_SUFFIX = ''
-    SERVER_NAME = 'brmullikin.herokuapp.com'
-    HOSTNAME_LIST = [SERVER_NAME]
-    ASSET_BASE = 'https://s3.amazonaws.com/'
-    ASSET_PATH = '{}{}'.format(
-        ASSET_BASE,
-        "static.dissata.com/static.brmullikin.com/dist"
-    )
+    ASSET_BASE = 'http://brmflask.dissata.com'
+    ASSET_PATH = '{}/github/brmflask/static/dist'.format(ASSET_BASE)
     DENY_ROBOTS = True

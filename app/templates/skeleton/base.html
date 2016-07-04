@@ -50,7 +50,7 @@
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="{%block twitter_site %}@dissata{% endblock %}">
+    <meta name="twitter:site" content="{%block twitter_site %}@brmwebdev{% endblock %}">
     <meta name="twitter:title" content="{{self.title()}}">
     <meta name="twitter:description" content="{{self.description()}}">
     <meta name="twitter:image" content="{{ config.get('ASSET_PATH') }}/{{self.mainimage()}}">
@@ -64,8 +64,7 @@
         {%- block content_header -%}
         <header class="top-header top-header--affixed">
             <a href="/" class="logo">
-                <h1 class="title">Benjamin Robert Mullikin</h1>
-                <h2 class="subtitle">Information, Notes, <span class="ampersand">&</span> Thoughts on the Web</h2>
+                <h1 class="title">BRMFlask</h1>
             </a>
             {% include '{}/partials/menu.html'.format(base) %}
         </header>

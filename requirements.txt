@@ -1,19 +1,27 @@
-## Flask
+##############################
+# Flask & Flask Dependencies #
+##############################
 Flask
 Flask-Compress
 
-# Fork of flask_cache: https://github.com/brmullikin/flask-markdown
-# -e git+git://github.com/sh4nks/flask-cache.git
+# Fork of flask_cache: https://github.com/sh4nks/flask-cache
+-e git+git://github.com/sh4nks/flask-cache.git
 
-# Fork of flask_markdown: https://github.com/sh4nks/flask-cache
--e git+git://github.com/brmullikin/flask-markdown.git#egg=flask_markdown
+# Fork of flask_markdown: https://github.com/brmullikin/flask-markdown
+-e git+git://github.com/brmullikin/flask-markdown.git@0.4#egg=flask_markdown
+
+##################################
+# BRMFlask specific dependencies #
+##################################
+coloredlogs
 htmlmin
 Markdown
-coloredlogs
 smartypants
 dotenv
 
-# Application Server
+############################
+# Serve Application (Live) #
+############################
 gunicorn
 eventlet
 

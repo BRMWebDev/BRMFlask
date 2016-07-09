@@ -16,7 +16,7 @@ class DevConfig(BaseConfig):
     SERVER_NAME = 'brmflask.dissata.com:5000'
     HOSTNAME_LIST = [SERVER_NAME]
     ASSET_BASE = 'http://brmflask.dissata.com'
-    ASSET_PATH = '{}/github/brmflask/static/dist'.format(ASSET_BASE)
+    ASSET_PATH = '{}/github/brmullikin/brmflask/static/dist'.format(ASSET_BASE)
     DENY_ROBOTS = True
     FLASK_CACHE = {
         'CACHE_DEFAULT_TIMEOUT': 0,

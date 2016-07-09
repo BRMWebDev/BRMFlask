@@ -18,6 +18,7 @@ htmlmin
 Markdown
 smartypants
 dotenv
+pygments
 
 ############################
 # Serve Application (Live) #

@@ -12,6 +12,31 @@
 
 {% block content_main %}
 
-{% filter markdown %}# Homepage{% endfilter %}
+{% filter markdown %}
+
+# Homepage
+
+1. one
+2. two
+3. three
+{: .code}
+
+!!text-alert|spam!!
+
+{--delete--} {~~delete and replace~>substitutions~~} {>>comment<<}
+
+~~~~{.python}
+# Python
+from somewhere import something
+~~~~
+{% endfilter %}
+<div class="language-python">
+{% filter markdown %}
+    #!python
+    # Python
+    from somewhere import something
+
+{% endfilter %}
+</div>
 
 {% endblock %}

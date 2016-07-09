@@ -72,5 +72,19 @@ class BaseConfig(object):
         template_extensions=TEMPLATE_EXTENSIONS,
         ignore_paths=TEMPLATE_IGNORE
     )
-    BLUEPRINTS = ['static', 'sitemap', 'dynamic']
-    EXTENSIONS = ['markdown', 'compress', 'cache']
+    BRMFLASK_BLUEPRINTS = ['static', 'sitemap', 'dynamic']
+    BRMFLASK_EXTENSIONS = ['markdown', 'compress', 'cache']
+    MARKDOWN_EXTENSIONS = [
+        'footnotes',
+        'smarty',
+        'toc',
+        'attr_list',
+        'codehilite',
+        'fenced_code'
+    ]
+    MARKDOWN_CONFIGS = {
+        'codehilite': {
+            'linenums': True,
+            'guess_lang': True
+        }
+    }

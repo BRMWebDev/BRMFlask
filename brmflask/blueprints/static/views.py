@@ -27,16 +27,22 @@ def list_configs():
 @static.route('/humans.txt')
 def humans():
     """Return Humans readable information about the website."""
-    response = make_response(render_template('txt/humans.txt'))
-    response.headers['Content-type'] = "text/plain"
-    return response
+    try:
+        response = make_response(render_template('txt/humans.txt'))
+        response.headers['Content-type'] = "text/plain"
+        return response
+    except:
+        abort(404)
 
 
 @static.route('/robots.txt')
 def robots():
     """Robot Crawler txt for search engines."""
-    response = make_response(
-        render_template('txt/robots.txt')
-    )
-    response.headers['Content-type'] = "text/plain"
-    return response
+    try:
+        response = make_response(
+            render_template('txt/robots.txt')
+        )
+        response.headers['Content-type'] = "text/plain"
+        return response
+    except:
+        abort(404)

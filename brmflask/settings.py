@@ -72,7 +72,5 @@ class BaseConfig(object):
         template_extensions=TEMPLATE_EXTENSIONS,
         ignore_paths=TEMPLATE_IGNORE
     )
-
-    ORGANIZATION = {
-        'name': 'B. R. Mullikin',
-    }
+    BLUEPRINTS = ['static', 'sitemap', 'dynamic']
+    EXTENSIONS = ['markdown', 'compress', 'cache']

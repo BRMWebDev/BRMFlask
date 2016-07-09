@@ -18,3 +18,7 @@ class DevConfig(BaseConfig):
     ASSET_BASE = 'http://brmflask.dissata.com'
     ASSET_PATH = '{}/github/brmflask/static/dist'.format(ASSET_BASE)
     DENY_ROBOTS = True
+    FLASK_CACHE = {
+        'CACHE_DEFAULT_TIMEOUT': 0,
+        'CACHE_TYPE': 'null'
+    }

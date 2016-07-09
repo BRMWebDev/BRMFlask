@@ -3,12 +3,12 @@ Load app and run it.
 
 Enables debug and profiler.
 """
-# from flask_debugtoolbar import DebugToolbarExtension
+from flask_debugtoolbar import DebugToolbarExtension
 from werkzeug.contrib.profiler import ProfilerMiddleware
 from app import runapp
 
 if __name__ == "__main__":
-    # DebugToolbarExtension(runapp)
+    DebugToolbarExtension(runapp)
 
     # Enabling profiling
     runapp.config['PROFILE'] = True

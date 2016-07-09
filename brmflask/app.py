@@ -11,6 +11,7 @@ from brmflask.blueprints.static import static
 from brmflask.blueprints.sitemap import sitemap
 from brmflask.blueprints.dynamic import dynamic
 from brmflask.utils.routing import base_path
+from brmflask.utils.cache import cache
 from dotenv import Dotenv
 
 
@@ -42,6 +43,7 @@ def create_app(app_name=__name__, config_override=None):
         auto_reset=True
     )
     Compress(this_app)
+    cache.init_app(this_app, config=this_app.config['FLASK_CACHE'])
     return this_app
 
 

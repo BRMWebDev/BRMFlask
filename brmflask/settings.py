@@ -19,6 +19,12 @@ class BaseConfig(object):
     # Deny robots? For staging and dev.
     DENY_ROBOTS = False
 
+    # Flask Cache Config
+    FLASK_CACHE = {
+        'CACHE_DEFAULT_TIMEOUT': 86400,
+        'CACHE_TYPE': 'simple'
+    }
+
     SEND_FILE_MAX_AGE_DEFAULT = 43200
 
     PERMANENT_SESSION_LIFETIME = 2678400

@@ -5,7 +5,7 @@ Flask
 Flask-Compress
 
 # Fork of flask_cache: https://github.com/sh4nks/flask-cache
--e git+git://github.com/sh4nks/flask-cache.git
+-e git+git://github.com/sh4nks/flask-cache.git#egg=flask_cache
 
 # Fork of flask_markdown: https://github.com/brmullikin/flask-markdown
 -e git+git://github.com/brmullikin/flask-markdown.git@0.4#egg=flask_markdown

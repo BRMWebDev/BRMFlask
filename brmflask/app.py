@@ -12,6 +12,8 @@ from brmflask.blueprints.sitemap import sitemap
 from brmflask.blueprints.dynamic import dynamic
 from brmflask.utils.routing import base_path
 from brmflask.utils.cache import cache
+from brmflask.exts.markdown import mdx_span_classes
+from brmflask.exts.markdown import mdx_critic
 from dotenv import Dotenv
 
 
@@ -31,20 +33,50 @@ def create_app(app_name=__name__, config_override=None):
     this_app.register_blueprint(static)
     this_app.register_blueprint(sitemap)
     this_app.register_blueprint(dynamic)
-    Markdown(
+    md = Markdown(
         this_app,
         extensions=[
             'footnotes',
-            'wikilinks',
             'smarty',
             'toc',
-            'attr_list'
+            'attr_list',
+            'codehilite',
+            'fenced_code'
         ],
+        extension_configs={
+            'codehilite': {'linenums': True, 'guess_lang': True}
+        },
         auto_reset=True
     )
+    md.register_extension(mdx_span_classes.makeExtension)
+    md.register_extension(mdx_critic.makeExtension)
     Compress(this_app)
     cache.init_app(this_app, config=this_app.config['FLASK_CACHE'])
     return this_app
+
+
+def extend_app(
+    app,
+    extensions=[
+        'markdown',
+        'compress',
+        'cache'
+    ]
+):
+    """
+    Apply extensions to Flask app.
+
+    Each extension specified in the extensions list will be called.
+    In addition, custom extensions may be put in app/__init__.py.
+
+    Current options are:
+    markdown: Markdown extension w/ footnotes, smarty, toc, & attr_list
+
+    :param: app Flask app
+    :param: extensions list of extensions to add
+    :return: None (or is it better to return the app??)
+    """
+    return None
 
 
 def configure_app(app, config_override=None):

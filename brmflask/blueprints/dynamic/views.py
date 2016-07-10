@@ -7,7 +7,7 @@ from flask import render_template, current_app, redirect, abort, request
 from . import dynamic
 from brmflask.utils.routing import route_exists, site_path
 from brmflask.utils.minify import minify_response
-from brmflask.utils.cache import cache
+from brmflask.exts.cache import cache
 # from brmflask.utils.analytics import record
 # from brmflask.utils.log import log
 

@@ -5,15 +5,7 @@ Load and configure brmflask flask application.
 """
 from os import environ
 from flask import Flask
-from flask_compress import Compress
-from flask_markdown import Markdown
-from brmflask.blueprints.static import static
-from brmflask.blueprints.sitemap import sitemap
-from brmflask.blueprints.dynamic import dynamic
 from brmflask.utils.routing import base_path
-from brmflask.utils.cache import cache
-from brmflask.exts.markdown import mdx_span_classes
-from brmflask.exts.markdown import mdx_critic
 from dotenv import Dotenv
 
 
@@ -30,39 +22,45 @@ def create_app(app_name=__name__, config_override=None):
         template_folder=base_path('app/templates')
     )
     configure_app(this_app, config_override)
-    this_app.register_blueprint(static)
-    this_app.register_blueprint(sitemap)
-    this_app.register_blueprint(dynamic)
-    md = Markdown(
-        this_app,
-        extensions=[
-            'footnotes',
-            'smarty',
-            'toc',
-            'attr_list',
-            'codehilite',
-            'fenced_code'
-        ],
-        extension_configs={
-            'codehilite': {'linenums': True, 'guess_lang': True}
-        },
-        auto_reset=True
-    )
-    md.register_extension(mdx_span_classes.makeExtension)
-    md.register_extension(mdx_critic.makeExtension)
-    Compress(this_app)
-    cache.init_app(this_app, config=this_app.config['FLASK_CACHE'])
+    register_blueprints(this_app, this_app.config['BRMFLASK_BLUEPRINTS'])
+    register_extensions(this_app, this_app.config['BRMFLASK_EXTENSIONS'])
     return this_app
 
+def register_blueprints(app, blueprints):
+    """
+    Apply extensions to Flask app.
 
-def extend_app(
-    app,
-    extensions=[
-        'markdown',
-        'compress',
-        'cache'
-    ]
-):
+    Each extension specified in the extensions list will be called.
+    In addition, custom extensions may be put in app/__init__.py.
+
+    Current list options are:
+    1. static
+    2. sitemap
+    3. dynamic
+
+    Psuedo Code:
+    1. For each "blueprint" in the list of blueprints
+    2. Import the module found at the path brmflask.blueprints."blueprint"
+    3. Get the package of the above imported module whose name is "blueprint"
+    4. Register the package as a Blueprint object for the given app.
+
+    :param: app Flask app
+    :param: extensions list of extensions to add
+    :return: None (or is it better to return the app??)
+    """
+    for blueprint in app.config['BRMFLASK_BLUEPRINTS']:
+        app.register_blueprint(
+            getattr(
+                __import__(
+                    "brmflask.blueprints.{0}".format(blueprint),
+                    fromlist=[blueprint]
+                ),
+                blueprint
+            )
+        )
+    return None
+
+def register_extensions(app, extensions):
     """
     Apply extensions to Flask app.
 
@@ -76,6 +74,18 @@ def extend_app(
     :param: extensions list of extensions to add
     :return: None (or is it better to return the app??)
     """
+    from flask_markdown import Markdown
+    from flask_compress import Compress
+    from brmflask.exts.cache import cache
+
+    Markdown(
+        app,
+        extensions=app.config['MARKDOWN_EXTENSIONS'],
+        extension_configs=app.config['MARKDOWN_CONFIGS'],
+        auto_reset=True
+    )
+    Compress(app)
+    cache.init_app(app, config=app.config['FLASK_CACHE'])
     return None
 
 

@@ -26,6 +26,7 @@ def create_app(app_name=__name__, config_override=None):
     register_extensions(this_app, this_app.config['BRMFLASK_EXTENSIONS'])
     return this_app
 
+
 def register_blueprints(app, blueprints):
     """
     Apply extensions to Flask app.
@@ -60,6 +61,7 @@ def register_blueprints(app, blueprints):
         )
     return None
 
+
 def register_extensions(app, extensions):
     """
     Apply extensions to Flask app.
@@ -67,25 +69,31 @@ def register_extensions(app, extensions):
     Each extension specified in the extensions list will be called.
     In addition, custom extensions may be put in app/__init__.py.
 
+    (needs refactor)
     Current options are:
-    markdown: Markdown extension w/ footnotes, smarty, toc, & attr_list
+    1. markdown
+    1.1 Markdown Configs:
+        a) footnotes
+        b) smarty
+        c) toc
+        d) attr_list
+        e) codehilite
+        f) fenced_code
+        g) span_classes
+    2. compress
+    3. cache
 
     :param: app Flask app
     :param: extensions list of extensions to add
     :return: None (or is it better to return the app??)
     """
-    from flask_markdown import Markdown
-    from flask_compress import Compress
-    from brmflask.exts.cache import cache
+    from brmflask.exts.compress import register_compress
+    from brmflask.exts.markdown import register_markdown
+    from brmflask.exts.cache import cache, register_cache
 
-    Markdown(
-        app,
-        extensions=app.config['MARKDOWN_EXTENSIONS'],
-        extension_configs=app.config['MARKDOWN_CONFIGS'],
-        auto_reset=True
-    )
-    Compress(app)
-    cache.init_app(app, config=app.config['FLASK_CACHE'])
+    register_markdown(app)
+    register_compress(app)
+    register_cache(app, cache)
     return None
 
 

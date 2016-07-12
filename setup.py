@@ -16,7 +16,7 @@ setup(
         'Flask',
         'Flask-Compress',
         'flask_caching',
-        'flask_markdown==0.4',
+        'brmflask_markdown==0.4',
         'coloredlogs',
         'htmlmin',
         'Markdown',
@@ -25,7 +25,7 @@ setup(
         'pygments'
     ],
     dependency_links=[
-        'https://github.com/brmullikin/flask-markdown/tarball/master#egg=flask_markdown-0.4'
+        'https://github.com/brmullikin/flask-markdown/tarball/master#egg=brmflask_markdown-0.4'
     ],
     tests_require=[
         'pytest',

@@ -15,8 +15,8 @@ setup(
     install_requires=[
         'Flask',
         'Flask-Compress',
-        'flask_cache',
-        'flask_markdown',
+        'flask_caching',
+        'flask_markdown==0.4',
         'coloredlogs',
         'htmlmin',
         'Markdown',
@@ -25,9 +25,8 @@ setup(
         'pygments'
     ],
     dependency_links=[
-        'git+git://github.com/sh4nks/flask-cache.git#egg=flask_cache',
-        'git+git://github.com/brmullikin/flask-markdown.git@0.4#egg=flask_markdown'
-    ]
+        'https://github.com/brmullikin/flask-markdown/tarball/master#egg=flask_markdown-0.4'
+    ],
     tests_require=[
         'pytest',
         'pytest-flask',

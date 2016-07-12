@@ -20,7 +20,7 @@ class BaseConfig(object):
     DENY_ROBOTS = False
 
     # Flask Cache Config
-    FLASK_CACHE = {
+    FLASK_CACHING = {
         'CACHE_DEFAULT_TIMEOUT': 86400,
         'CACHE_TYPE': 'simple'
     }

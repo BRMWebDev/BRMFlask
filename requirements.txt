@@ -29,9 +29,9 @@ eventlet
 ###############################
 # Development & Testing Tools #
 ###############################
-# pytest
-# flask_debugtoolbar
-# pytest-cov
-# pytest-flask
-# pep8
-# flake8-pep257
+pytest
+flask_debugtoolbar
+pytest-cov
+pytest-flask
+pep8
+flake8-pep257

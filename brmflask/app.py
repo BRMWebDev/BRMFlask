@@ -9,7 +9,11 @@ from brmflask.utils.routing import base_path
 from dotenv import Dotenv
 
 
-def create_app(app_name=__name__, config_override=None):
+def create_app(
+    app_name=__name__,
+    config_override=None,
+    template_folder='app/templates'
+):
     """
     Create Flask app using factory.
 
@@ -19,7 +23,7 @@ def create_app(app_name=__name__, config_override=None):
     this_app = Flask(
         app_name,
         instance_relative_config=True,
-        template_folder=base_path('app/templates')
+        template_folder=base_path(template_folder)
     )
     configure_app(this_app, config_override)
     register_blueprints(this_app, this_app.config['BRMFLASK_BLUEPRINTS'])

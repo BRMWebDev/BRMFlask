@@ -7,7 +7,7 @@ class BaseConfig(object):
 
     INCLUDE_VERSION = True
 
-    VERSION = '0.2.1'
+    VERSION = '0.2.2'
 
     BASE_URI = 'https://'
     # Canonical url for the applciation

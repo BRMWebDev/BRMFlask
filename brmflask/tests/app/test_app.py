@@ -26,7 +26,8 @@ def test_app(config, app):
        And that they can be overriden by configs_overriden when
        app is instantiated.
     """
+    config_class_string = "brmflask.tests.dryrun.settings.TestConfig"
     assert not app.debug
-    assert config['BRMFLASK_CONFIG'] == "app.settings.LiveConfig"
+    assert config['BRMFLASK_CONFIG'] == config_class_string
     assert config['BRMFLASK_TEST_KEY'] == "TEST_VALUE"
     assert config['BRMFLASK_ENV_FILE'] == ".brm_env"

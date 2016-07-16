@@ -1,0 +1,30 @@
+{%- set base = config.get('TEMPLATE_PATH') -%}
+#}<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link rel="dns-prefetch" href="{{ config.get('ASSET_BASE') }}">
+
+    <title>{%block title %}{% endblock %}</title>
+</head>
+<body class="{%block body_classes %}{% endblock %}">
+    <div class="loader"></div>
+    <div class="lazy-load">
+        {%- block content_header -%}
+        <header class="top-header top-header--affixed">
+            <a href="/" class="logo">BRMFLASK</a>
+            {% include '{}/partials/menu.html'.format(base) %}
+        </header>
+        {%- block hero -%}{%- endblock -%}
+        {%- endblock -%}
+        {%- block body %}{%- endblock -%}
+    </div>
+    {%- block css_default -%}
+    {%- endblock -%}
+    {%- block css -%}{%- endblock -%}
+    {%- block scripts_default -%}
+    {%- endblock -%}
+    {%- block scripts -%}{%- endblock -%}
+</body>
+</html>

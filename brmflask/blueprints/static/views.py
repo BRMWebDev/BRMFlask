@@ -6,6 +6,7 @@ from flask import (
     current_app,
     abort
 )
+from brmflask.utils.routing import template_path
 from . import static
 
 
@@ -28,11 +29,18 @@ def list_configs():
 def humans():
     """Return Humans readable information about the website."""
     try:
-        response = make_response(render_template('txt/humans.txt'))
+        response = make_response(
+            render_template(
+                template_path('txt/humans.txt')
+            )
+        )
         response.headers['Content-type'] = "text/plain"
         return response
     except:
-        abort(404)
+        if current_app.debug:
+            raise
+        else:
+            abort(404)
 
 
 @static.route('/robots.txt')
@@ -40,9 +48,14 @@ def robots():
     """Robot Crawler txt for search engines."""
     try:
         response = make_response(
-            render_template('txt/robots.txt')
+            render_template(
+                template_path('txt/robots.txt')
+            )
         )
         response.headers['Content-type'] = "text/plain"
         return response
     except:
-        abort(404)
+        if current_app.debug:
+            raise
+        else:
+            abort(404)

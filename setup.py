@@ -1,8 +1,10 @@
+"""BRMFlask is a unified website generator."""
 from setuptools import setup
+from brmflask.settings import BaseConfig
 
 setup(
     name='BRMFlask',
-    version='0.2.1',
+    version=BaseConfig.VERSION,
     url='http://github.com/brmullikin/brmflask',
     license='None',
     author='B. R. Mullikin',

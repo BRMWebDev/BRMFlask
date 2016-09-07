@@ -11,10 +11,10 @@ class BaseConfig(object):
 
     BASE_URI = 'https://'
     # Canonical url for the applciation
-    SERVER_NAME = 'www.brmullikin.com'
+    SERVER_NAME = 'www.example.com'
 
     # acceptable servers/hosts from which to serve content
-    HOSTNAME_LIST = ['www.brmullikin.com']
+    HOSTNAME_LIST = ['www.example.com']
 
     # Deny robots? For staging and dev.
     DENY_ROBOTS = False

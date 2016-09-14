@@ -1,4 +1,4 @@
-# Readme for BRMFlask
+# BRMFlask [![Build Status](https://travis-ci.org/brmullikin/BRMFlask.svg?branch=master)](https://travis-ci.org/brmullikin/BRMFlask) [![Coverage Status](https://coveralls.io/repos/github/brmullikin/BRMFlask/badge.svg)](https://coveralls.io/github/brmullikin/BRMFlask)
 
 A better readme.md coming soon...
 

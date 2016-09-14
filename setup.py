@@ -6,7 +6,7 @@ setup(
     name='BRMFlask',
     version=BaseConfig.VERSION,
     url='http://github.com/brmullikin/brmflask',
-    license='None',
+    license='MIT',
     author='B. R. Mullikin',
     author_email='ben@brmullikin.com',
     description='Private Flask App',
@@ -32,10 +32,9 @@ setup(
     tests_require=[
         'pytest',
         'pytest-flask',
-        'pytest',
         'pytest-cov',
-        'pytest-flask',
         'pep8',
-        'flake8-pep257'
+        'flake8-pep257',
+        'flask-debugtoolbar'
     ]
 )

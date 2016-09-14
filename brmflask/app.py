@@ -12,6 +12,7 @@ from dotenv import Dotenv
 def create_app(
     app_name=__name__,
     config_override=None,
+    env_file='.brm_env',
     template_folder='app/templates'
 ):
     """
@@ -25,7 +26,11 @@ def create_app(
         instance_relative_config=True,
         template_folder=base_path(template_folder)
     )
-    configure_app(this_app, config_override)
+    configure_app(
+        this_app,
+        config_override=config_override,
+        env_file=env_file
+    )
     register_blueprints(this_app, this_app.config['BRMFLASK_BLUEPRINTS'])
     register_extensions(this_app, this_app.config['BRMFLASK_EXTENSIONS'])
     return this_app
@@ -101,14 +106,14 @@ def register_extensions(app, extensions):
     return None
 
 
-def configure_app(app, config_override=None):
+def configure_app(app, config_override=None, env_file='.brm_env'):
     """
     Configure application settings.
 
     :param app: Flask application instance
     :return: Flask app.config object.
     """
-    env = load_env('./.brm_env')
+    env = load_env(env_file)
     # ^^ Load environment:
     # load environment from file if it exists
     # OR load from os.environ

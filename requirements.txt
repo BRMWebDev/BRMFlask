@@ -1,0 +1,16 @@
+coloredlogs
+dotenv
+flake8-pep257
+Flask
+Flask-Compress
+flask_caching
+flask-debugtoolbar
+htmlmin
+-e git://github.com/brmullikin/flask-markdown.git@5dc0fdb73ab4899ee11934e24670ea17a0e1143e#egg=Flask_Markdown
+Markdown
+pep8
+pygments
+pytest
+pytest-cov
+pytest-flask
+smartypants

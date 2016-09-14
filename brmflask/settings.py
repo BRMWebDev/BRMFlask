@@ -1,13 +1,12 @@
 """Settings for the BRMFlask app."""
 from brmflask.utils.setting_funcs import map_routes
 
-
 class BaseConfig(object):
     """Default App Config."""
 
     INCLUDE_VERSION = True
 
-    VERSION = '0.2.3'
+    VERSION = '0.2.4'
 
     BASE_URI = 'https://'
     # Canonical url for the applciation
@@ -76,6 +75,7 @@ class BaseConfig(object):
         "humans": "txt/humans.txt",
         "robots": "txt/robots.txt"
     }
+    BRMFLASK_ENV_FILE = '.brm_env'
     BRMFLASK_BLUEPRINTS = ['static', 'sitemap', 'dynamic']
     BRMFLASK_EXTENSIONS = ['markdown', 'compress', 'cache']
     MARKDOWN_EXTENSIONS = [

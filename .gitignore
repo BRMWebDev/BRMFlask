@@ -1,5 +1,4 @@
 .env
-.brm_env
 static/src/vendor
 bower_components
 node_modules

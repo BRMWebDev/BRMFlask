@@ -2,13 +2,10 @@
 from setuptools import setup
 from brmflask.settings import BaseConfig
 
-MARKDOWN_REPO = "https://github.com/brmullikin/flask-markdown"
-REPO = 'http://github.com/brmullikin/brmflask'
-
 setup(
     name='BRMFlask',
     version=BaseConfig.VERSION,
-    url=REPO,
+    url='http://github.com/brmullikin/brmflask',
     license='None',
     author='B. R. Mullikin',
     author_email='ben@brmullikin.com',
@@ -30,7 +27,7 @@ setup(
         'pygments'
     ],
     dependency_links=[
-        '{}/tarball/master#egg=brmflask_markdown-0.4'.format(MARKDOWN_REPO)
+        'https://github.com/brmullikin/flask-markdown/tarball/master#egg=brmflask_markdown-0.4'
     ],
     tests_require=[
         'pytest',

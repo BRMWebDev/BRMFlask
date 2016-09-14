@@ -10,12 +10,6 @@ from brmflask.utils.routing import template_path
 from . import static
 
 
-# TODO create vcard
-# @static.route('/vcard')
-# # def vcard():
-#     return render_template('/html/vcard.html')
-
-
 @static.route('/list-configs')
 def list_configs():
     """Return the config dictionary if in Debug mode."""
@@ -28,34 +22,28 @@ def list_configs():
 @static.route('/humans.txt')
 def humans():
     """Return Humans readable information about the website."""
-    try:
+    if current_app.config['STATIC_ROUTES'].get('humans', None):
         response = make_response(
             render_template(
-                template_path('txt/humans.txt')
+                template_path(current_app.config['STATIC_ROUTES']['humans'])
             )
         )
         response.headers['Content-type'] = "text/plain"
         return response
-    except:
-        if current_app.debug:
-            raise
-        else:
-            abort(404)
+    else:
+        abort(404)
 
 
 @static.route('/robots.txt')
 def robots():
     """Robot Crawler txt for search engines."""
-    try:
+    if current_app.config['STATIC_ROUTES'].get('robots', None):
         response = make_response(
             render_template(
-                template_path('txt/robots.txt')
+                template_path(current_app.config['STATIC_ROUTES']['robots'])
             )
         )
         response.headers['Content-type'] = "text/plain"
         return response
-    except:
-        if current_app.debug:
-            raise
-        else:
-            abort(404)
+    else:
+        abort(404)

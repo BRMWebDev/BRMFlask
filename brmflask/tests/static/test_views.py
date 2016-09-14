@@ -13,10 +13,24 @@ def test_humans(client):
     assert response.status_code == 200
 
 
+def test_humans_missing(config, client):
+    """Humans.txt should respond with a success 200."""
+    config['STATIC_ROUTES']['humans'] = None
+    response = client.get(url_for('static.humans'))
+    assert response.status_code == 404
+
+
 def test_robots(client):
     """Robots.txt should respond with a success 200."""
     response = client.get(url_for('static.robots'))
     assert response.status_code == 200
+
+
+def test_robots_missing(config, client):
+    """Humans.txt should respond with a success 200."""
+    config['STATIC_ROUTES']['robots'] = None
+    response = client.get(url_for('static.robots'))
+    assert response.status_code == 404
 
 
 @pytest.mark.options(debug=True)

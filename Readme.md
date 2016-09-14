@@ -1,39 +1,23 @@
 # Readme for BRMFlask
 
-## BRMFlask Command.
+A better readme.md coming soon...
 
 ## Setup
 
 To set up, run ```pip install --editable```
 
-### test
+## test
 
-Run tests with ```brmflask test```
+Run tests with: ```py.test -v brmflask```
 
-### flake8
-
-### cov
-
-## Testing Documentation
-
-## Run Tests
-
-```
-py.test brmflask/tests
-```
 
 ### See Test Coverage
 
-```
-py.test --cov-report term-missing --cov brmflask
-```
+Run coverage with: ```py.test -v --cov-report term-missing --cov brmflask```
 
 ### Flake8
 
-## S3 and Static Files
+See Flake8 compatibility with: ```Flake8 --max-line-length=100 --ignore=E302,D203 --exclude __init__.py brmflask```
 
-## Run s3.py
+**note:** I ignore E302 & D203 in favor of PEP257 rules, especially D211 and extend the max-line to 100 (Because [Beyond Pep8](https://www.youtube.com/watch?v=wf-BqAjZb8M) & [A Foolish Consistency is the Hobgoblin of Little Minds](https://www.python.org/dev/peps/pep-0008/#a-foolish-consistency-is-the-hobgoblin-of-little-minds)).
 
-At the moment s3.py requires python 2.7 to run.
-
-python2 s3.py

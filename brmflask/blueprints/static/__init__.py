@@ -1,3 +1,4 @@
+"""The BRMFlask Static Blueprint."""
 from brmflask.utils.routing import base_path
 from flask import Blueprint
 

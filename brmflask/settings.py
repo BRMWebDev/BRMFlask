@@ -7,7 +7,7 @@ class BaseConfig(object):
 
     INCLUDE_VERSION = True
 
-    VERSION = '0.2.2'
+    VERSION = '0.2.3'
 
     BASE_URI = 'https://'
     # Canonical url for the applciation
@@ -42,7 +42,7 @@ class BaseConfig(object):
 
     ASSET_BASE = 'https://s3.amazonaws.com/'
 
-    ASSET_PATH = '{}static.brmullikin.com/dist'.format(ASSET_BASE)
+    ASSET_PATH = '{}static.brmflask.com/dist'.format(ASSET_BASE)
 
     ##################
     # Redirect Configs
@@ -72,6 +72,10 @@ class BaseConfig(object):
         template_extensions=TEMPLATE_EXTENSIONS,
         ignore_paths=TEMPLATE_IGNORE
     )
+    STATIC_ROUTES = {
+        "humans": "txt/humans.txt",
+        "robots": "txt/robots.txt"
+    }
     BRMFLASK_BLUEPRINTS = ['static', 'sitemap', 'dynamic']
     BRMFLASK_EXTENSIONS = ['markdown', 'compress', 'cache']
     MARKDOWN_EXTENSIONS = [

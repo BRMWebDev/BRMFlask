@@ -1,3 +1,4 @@
+"""The BRMFlask Sitemap Blueprint."""
 from flask import Blueprint
 
 sitemap = Blueprint(

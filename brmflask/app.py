@@ -4,6 +4,7 @@ BRMFlask instance instantiation.
 Load and configure brmflask flask application.
 """
 from os import environ
+from importlib import import_module
 from flask import Flask
 from brmflask.utils.routing import base_path
 from dotenv import Dotenv
@@ -58,13 +59,10 @@ def register_blueprints(app, blueprints):
     :param: extensions list of extensions to add
     :return: None (or is it better to return the app??)
     """
-    for blueprint in app.config['BRMFLASK_BLUEPRINTS']:
+    for blueprint in blueprints:
         app.register_blueprint(
             getattr(
-                __import__(
-                    "brmflask.blueprints.{0}".format(blueprint),
-                    fromlist=[blueprint]
-                ),
+                import_module("brmflask.blueprints.{0}".format(blueprint)),
                 blueprint
             )
         )
@@ -78,17 +76,8 @@ def register_extensions(app, extensions):
     Each extension specified in the extensions list will be called.
     In addition, custom extensions may be put in app/__init__.py.
 
-    (needs refactor)
     Current options are:
     1. markdown
-    1.1 Markdown Configs:
-        a) footnotes
-        b) smarty
-        c) toc
-        d) attr_list
-        e) codehilite
-        f) fenced_code
-        g) span_classes
     2. compress
     3. cache
 
@@ -96,15 +85,14 @@ def register_extensions(app, extensions):
     :param: extensions list of extensions to add
     :return: None (or is it better to return the app??)
     """
-    from brmflask.exts.compress import register_compress
-    from brmflask.exts.markdown import register_markdown
-    from brmflask.exts.cache import cache, register_cache
 
-    register_markdown(app)
-    register_compress(app)
-    register_cache(app, cache)
+    for extension in extensions:
+        register = "register_{0}".format(extension)
+        locals()[register] = getattr(
+            import_module("brmflask.exts.{}".format(extension)),
+            "register_{}".format(extension)
+        )(app)
     return None
-
 
 def configure_app(app, config_override=None, env_file='.brm_env'):
     """

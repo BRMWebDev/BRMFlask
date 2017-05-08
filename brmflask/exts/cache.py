@@ -3,7 +3,7 @@ from flask_caching import Cache
 
 cache = Cache()
 
-def register_cache(app, cache):
+def register_cache(app):
     """Register the cache extension."""
     cache.init_app(app, config=app.config['FLASK_CACHING'])
     return cache

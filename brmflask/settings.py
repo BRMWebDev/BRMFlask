@@ -79,12 +79,12 @@ class BaseConfig(object):
     BRMFLASK_BLUEPRINTS = ['static', 'sitemap', 'dynamic']
     BRMFLASK_EXTENSIONS = ['markdown', 'compress', 'cache']
     MARKDOWN_EXTENSIONS = [
-        'footnotes',
+        'extra',
         'smarty',
         'toc',
         'attr_list',
         'codehilite',
-        'fenced_code'
+        'fenced_code',
     ]
     MARKDOWN_CONFIGS = {
         'codehilite': {

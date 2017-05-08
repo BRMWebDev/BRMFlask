@@ -23,7 +23,7 @@ setup(
         'htmlmin',
         'Markdown',
         'smartypants',
-        'dotenv',
+        'python-dotenv',
         'pygments'
     ],
     dependency_links=[

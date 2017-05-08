@@ -17,4 +17,4 @@ if __name__ == "__main__":
     runapp.wsgi_app = ProfilerMiddleware(
         runapp.wsgi_app, restrictions=[5]
     )
-    runapp.run(debug=False)
+    runapp.run(debug=True)

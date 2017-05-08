@@ -1,5 +1,5 @@
 coloredlogs
-dotenv
+python-dotenv
 flake8-pep257
 Flask
 Flask-Compress

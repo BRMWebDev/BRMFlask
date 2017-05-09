@@ -5,14 +5,15 @@ Test all functions in brmflask.app. We will omit tests
 for create_app() and configure_app() since they are prerequisite
 for all other Flask related tests.
 """
+from brmflask.app import load_env
+from brmflask.utils.dotenv import dotenv
 from os import environ
-from dotenv import load_dotenv
 
 
 def test_env_load(client):
     """Home page should respond with a success 200."""
-    assert load_dotenv('./.brm_env') == load_dotenv('./.brm_env')
-    #assert load_env("file") == environ
+    assert dict(load_env('./.brm_env')) == dict(dotenv('./.brm_env'))
+    assert dict(load_env('file')) == {}
 
 
 def test_app(config, app):

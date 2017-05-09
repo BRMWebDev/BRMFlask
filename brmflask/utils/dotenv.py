@@ -1,7 +1,10 @@
 """Utilites: Functions to help load environment variables."""
 from ast import literal_eval
+from os.path import exists
 
 def dotenv(path):
+    if not exists(path):
+        return None
     for line in open(path):
         line = line.strip()
         # Ignore comments and lines w/ out equal sign.

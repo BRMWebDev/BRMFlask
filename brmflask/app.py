@@ -140,10 +140,4 @@ def load_env(env_file):
     :param env_file: <string> path/to/file
     :return: <dict>
     """
-    try:
-        # is there a .env file?
-        env = dotenv(env_file)
-    except IOError:
-        # can't find file try normal environment
-        env = environ
-    return env
+    return dotenv(env_file) or environ

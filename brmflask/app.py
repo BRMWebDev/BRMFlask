@@ -7,7 +7,7 @@ from os import environ
 from importlib import import_module
 from flask import Flask
 from brmflask.utils.routing import base_path
-from dotenv import load_dotenv
+from brmflask.utils.dotenv import dotenv
 
 
 def create_app(
@@ -101,14 +101,14 @@ def configure_app(app, config_override=None, env_file='.brm_env'):
     :param app: Flask application instance
     :return: Flask app.config object.
     """
-    env = load_dotenv(env_file)
+    env = dotenv(env_file)
     # ^^ Load environment:
     # load environment from file if it exists
     # OR load from os.environ
 
     # Add the environ dict to the config
     if env:
-        app.config.update(environ)
+        app.config.update(env)
 
     # Override any values if necessary
     if config_override:
@@ -126,25 +126,24 @@ def configure_app(app, config_override=None, env_file='.brm_env'):
     )
     return app.config
 
+def load_env(env_file):
+    """
+    Load the app environment.
 
-# def load_env(env_file):
-#     """
-#     Load the app environment.
+    First try to load the environment from env file
+    If no env file is loaded, then set the env to the
+    system environment. This env file will be used to
+    load the correct settings class. We are looking for
+    the BRMFLASK_CONFIG key which should have the value
+    of the class object to load into the config.
 
-#     First try to load the environment from env file
-#     If no env file is loaded, then set the env to the
-#     system environment. This env file will be used to
-#     load the correct settings class. We are looking for
-#     the BRMFLASK_CONFIG key which should have the value
-#     of the class object to load into the config.
-
-#     :param env_file: <string> path/to/file
-#     :return: <dict>
-#     """
-#     try:
-#         # is there a .env file?
-#         env = load_dotenv(env_file)
-#     except IOError:
-#         # can't find file try normal environment
-#         env = environ
-#     return env
+    :param env_file: <string> path/to/file
+    :return: <dict>
+    """
+    try:
+        # is there a .env file?
+        env = dotenv(env_file)
+    except IOError:
+        # can't find file try normal environment
+        env = environ
+    return env

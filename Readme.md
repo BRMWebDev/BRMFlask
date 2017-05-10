@@ -1,4 +1,4 @@
-# BRMFlask [![Build Status](https://travis-ci.org/BRMWebDev/BRMFlask.svg?branch=master)](https://travis-ci.org/BRMWebDev/BRMFlask) [![Coverage Status](https://coveralls.io/repos/github/brmullikin/BRMFlask/badge.svg)](https://coveralls.io/github/brmullikin/BRMFlask)
+# BRMFlask [![Build Status](https://travis-ci.org/BRMWebDev/BRMFlask.svg?branch=master)](https://travis-ci.org/BRMWebDev/BRMFlask) [![Coverage Status](https://coveralls.io/repos/github/BRMWebDev/BRMFlask/badge.svg?branch=master)](https://coveralls.io/github/BRMWebDev/BRMFlask?branch=master)
 
 A better readme.md coming soon...
 

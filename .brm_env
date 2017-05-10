@@ -1,1 +1,4 @@
+# ENV File - used in Unit Tests
 BRMFLASK_CONFIG=brmflask.tests.dryrun.settings.DevConfig
+Some Bad Line
+Mock_Value="Some Mock Value"

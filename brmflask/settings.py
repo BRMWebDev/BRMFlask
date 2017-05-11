@@ -77,6 +77,8 @@ class BaseConfig(object):
     }
     BRMFLASK_ENV_FILE = '.brm_env'
     BRMFLASK_BLUEPRINTS = ['static', 'sitemap', 'dynamic']
+
+    # For now, Cache is a required extension
     BRMFLASK_EXTENSIONS = ['markdown', 'compress', 'cache']
     MARKDOWN_EXTENSIONS = [
         'extra',

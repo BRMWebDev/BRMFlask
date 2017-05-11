@@ -7,13 +7,13 @@ from flask import render_template, current_app, redirect, abort, request
 from . import dynamic
 from brmflask.utils.routing import route_exists, site_path
 from brmflask.utils.minify import minify_response
-from brmflask.exts.cache import cache
+from brmflask.exts.cache import cached
 # from brmflask.utils.analytics import record
 # from brmflask.utils.log import log
 
 
 @dynamic.route('/')
-@cache.cached()
+@cached
 @minify_response
 def homepage():
     """Render the Homepage."""
@@ -25,7 +25,7 @@ def homepage():
 # record requests
 # @analytics.record()
 @dynamic.route('/<path:path>', methods=['GET'])
-@cache.cached()
+@cached
 @minify_response
 def router(path):
     """

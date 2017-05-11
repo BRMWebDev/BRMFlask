@@ -34,12 +34,8 @@ class DevConfig(BaseConfig):
         ASSET_BASE
     )
     DENY_ROBOTS = True
-    FLASK_CACHING = {
-        'CACHE_DEFAULT_TIMEOUT': 1,
-        'CACHE_TYPE': 'null'
-    }
     TEMPLATE_PATH = 'brmflask/tests/dryrun/templates'
-    BRMFLASK_EXTENSIONS = ['markdown', 'compress', 'cache', 'debug_toolbar']
+    BRMFLASK_EXTENSIONS = ['markdown', 'debug_toolbar']
     ROUTES = map_routes(
         template_path="{}/{}".format(TEMPLATE_PATH, BaseConfig.SITE_FOLDER),
         template_extensions=BaseConfig.TEMPLATE_EXTENSIONS,

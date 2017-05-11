@@ -80,6 +80,7 @@ def register_extensions(app, extensions):
     1. markdown
     2. compress
     3. cache
+    4. Debug Toolbar
 
     :param: app Flask app
     :param: extensions list of extensions to add

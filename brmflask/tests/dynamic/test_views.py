@@ -6,10 +6,13 @@ Test all the views in the dynamic blueprint.
 from flask import url_for
 
 
-def test_homepage(client):
+def test_homepage(config, client):
     """Homapage should respond with a success 200."""
     response = client.get(url_for('dynamic.homepage'))
     assert response.status_code == 200
+    config['BRMFLASK_EXTENSIONS'].remove('cache')
+    no_cache_response = client.get(url_for('dynamic.homepage'))
+    assert no_cache_response.status_code == 200
 
 
 def test_router(config, client):

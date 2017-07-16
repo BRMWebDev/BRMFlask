@@ -14,6 +14,7 @@ def create_app(
     app_name=__name__,
     config_override=None,
     env_file='.brm_env',
+    load_environ=True,
     template_folder='app/templates'
 ):
     """
@@ -30,6 +31,7 @@ def create_app(
     configure_app(
         this_app,
         config_override=config_override,
+        load_environ=load_environ,
         env_file=env_file
     )
     register_blueprints(this_app, this_app.config['BRMFLASK_BLUEPRINTS'])
@@ -95,23 +97,27 @@ def register_extensions(app, extensions):
         )(app)
     return None
 
-def configure_app(app, config_override=None, env_file='.brm_env'):
+def configure_app(
+    app,
+    config_override=None,
+    load_environ=True,
+    env_file='.brm_env'
+):
     """
     Configure application settings.
 
     :param app: Flask application instance
     :return: Flask app.config object.
     """
-    env = dotenv(env_file)
-    # ^^ Load environment:
-    # load environment from file if it exists
-    # OR load from os.environ
 
     # Add the environ dict to the config
-    if env:
-        app.config.update(env)
+    if load_environ:
+        app.config.update(environ)
 
-    # Override any values if necessary
+    # load environment from file if it exists
+    app.config.update(load_dotenv(env_file))
+
+    # Override any values at runtime if necessary
     if config_override:
         app.config.update(config_override)
 
@@ -127,7 +133,7 @@ def configure_app(app, config_override=None, env_file='.brm_env'):
     )
     return app.config
 
-def load_env(env_file):
+def load_dotenv(env_file):
     """
     Load the app environment.
 
@@ -141,4 +147,4 @@ def load_env(env_file):
     :param env_file: <string> path/to/file
     :return: <dict>
     """
-    return dotenv(env_file) or environ
+    return dotenv(env_file)

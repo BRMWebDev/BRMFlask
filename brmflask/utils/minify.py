@@ -11,5 +11,5 @@ def minify_response(f):
         if current_app.debug:
             return f(*args, **kwargs)
         else:
-            return minify(f(*args, **kwargs))
+            return minify(f(*args, **kwargs), remove_optional_attribute_quotes=False)
     return wrapped

@@ -25,7 +25,7 @@ html_template = """<!doctype html>
 def test_minify_debug(client):
     """No minify if in debug mode."""
     assert minify_func(html_template) == html_template
-    assert not minify_func(html_template) == _minify(html_template)
+    assert not minify_func(html_template) == _minify(html_template, remove_optional_attribute_quotes=False)
 
 
 def test_minify(client):
@@ -37,4 +37,4 @@ def test_minify(client):
     assert "minify" == _minify("minify")
     assert "minify" == minify_func("minify")
     assert not minify_func(html_template) == html_template
-    assert minify_func(html_template) == _minify(html_template)
+    assert minify_func(html_template) == _minify(html_template, remove_optional_attribute_quotes=False)

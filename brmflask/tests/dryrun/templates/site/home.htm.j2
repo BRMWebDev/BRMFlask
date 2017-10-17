@@ -1,0 +1,92 @@
+{% set base = config.get('TEMPLATE_PATH') %}
+{% extends '{0}/skeleton/base.htm.j2'.format(base) %}
+
+{%block title %}Home Page{% endblock %}
+{%block description %}Page under construction{% endblock %}
+{%block mainimage %}img/default-image.png{% endblock %}
+{%block author %}B. R. Mullikin{% endblock %}
+{%block twitter_author %}@dissata{% endblock %}
+
+{%block hero %} {% endblock %}
+
+{% block content_main %}
+
+{% filter markdown %}
+
+# Homepage
+
+1. one
+2. two
+3. three
+
+{% endfilter %}
+
+<svg id="mobile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56.17 42.16" style="height:2.25em; width: 3em;margin: 0;" pre>
+    <defs>
+        <style>
+        #mobile .a,
+        #mobile .b,
+        #mobile .c,
+        #mobile .d,
+        #mobile .e,
+        #mobile .f {
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke: #000;
+            stroke-width: 1px;
+        }
+
+        #mobile .a,
+        #mobile .b {
+            stroke: #000;
+            stroke-width: 2px;
+        }
+
+        #mobile .d,
+        #mobile .e,
+        #mobile .f {
+            stroke: red;
+            stroke-width: 1.5px;
+        }
+
+        #mobile .f {
+            stroke-width: 2px;
+        }
+        </style>
+    </defs>
+    <title>responsive</title>
+    <path class="a" d="M45,4.35A3.49,3.49,0,0,0,41.59,2H5.94A3.67,3.67,0,0,0,2.38,5.74v28.1a3.67,3.67,0,0,0,3.57,3.77H38" transform="translate(-1.63 -1.22)" />
+    <line class="b" x1="32.84" y1="41.16" x2="11.45" y2="41.16" />
+    <line class="a" x1="22.14" y1="36.4" x2="22.14" y2="41.16" />
+    <line class="a" x1="24.52" y1="26.89" x2="0.75" y2="26.89" />
+    <path class="a" d="M49.91,16.23V11.48A2.38,2.38,0,0,0,47.53,9.1H33.27a2.38,2.38,0,0,0-2.38,2.38v19a2.38,2.38,0,0,0,2.38,2.38H38" transform="translate(-1.63 -1.22)" />
+    <line class="a" x1="36.4" y1="26.89" x2="29.27" y2="26.89" />
+    <rect class="a" x="41.16" y="19.76" width="14.26" height="21.39" rx="2.38" ry="2.38" />
+    <line class="a" x1="55.42" y1="36.4" x2="41.16" y2="36.4" />
+    <line class="a" x1="55.42" y1="24.52" x2="41.15" y2="24.52" />
+    <line class="a" x1="48.29" y1="12.64" x2="29.27" y2="12.64" />
+    <line class="c" x1="46.99" y1="22.14" x2="49.59" y2="22.14" />
+    <line class="c" x1="36.15" y1="10.38" x2="41.41" y2="10.38" />
+    <line x1="4.55" x2="4.55" class="f" y1="23" y2="15" />
+    <line x1="4.55" x2="4.55" class="f" y1="11" y2="9" />
+    <line class="b" x1="48.28" y1="38.78" x2="48.29" y2="38.78" />
+    <line class="e" x1="33" x2="33" y1="23" y2="18" />
+    <line class="d" x1="46.55" x2="52.2" y1="33" y2="33" />
+    <line class="d" x1="50.9" x2="52.2" y1="30" y2="30" />
+</svg>
+
+<div class="language-python">
+{% filter markdown %}
+    #!python
+    # Python
+    from somewhere import something
+
+    if True:
+        print("True!")
+
+
+{% endfilter %}
+</div>
+
+{% endblock %}

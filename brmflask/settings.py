@@ -6,7 +6,7 @@ class BaseConfig(object):
 
     INCLUDE_VERSION = True
 
-    VERSION = '0.2.9'
+    VERSION = '0.2.10'
 
     BASE_URI = 'https://'
     # Canonical url for the applciation
@@ -60,7 +60,7 @@ class BaseConfig(object):
     TEMPLATE_PATH = 'app/templates'
     SITE_FOLDER = 'site'
     # What are the appropriate extensions for the template files?
-    TEMPLATE_EXTENSIONS = ['*.html']
+    TEMPLATE_EXTENSIONS = ['*.htm.j2']
     # ignore template files with this path or name
     TEMPLATE_IGNORE = [
         'home'

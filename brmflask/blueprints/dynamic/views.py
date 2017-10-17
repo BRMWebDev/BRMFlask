@@ -5,7 +5,7 @@ Renders a template based on the routes in the settings.
 """
 from flask import render_template, current_app, redirect, abort, request
 from . import dynamic
-from brmflask.utils.routing import route_exists, site_path
+from brmflask.utils.routing import route_exists, site_path, template_extension
 from brmflask.utils.minify import minify_response
 from brmflask.exts.cache import cached
 # from brmflask.utils.analytics import record
@@ -17,8 +17,9 @@ from brmflask.exts.cache import cached
 @minify_response
 def homepage():
     """Render the Homepage."""
+    route = template_extension('home')
     return render_template(
-        site_path('home.html')
+        site_path(route)
     )
 
 

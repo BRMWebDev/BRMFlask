@@ -61,17 +61,28 @@ def route_exists(path):
         return None
     # Iterate through each extension possibility in TEMPLATE_EXTENSIONS.
     # If the file exists, return the path othe the file
+    return template_extension(path)
+
+
+def template_extension(path):
+    """
+    Check if file with allowable extension exists for route
+
+    :param path: <string> path
+    :return: <string> route OR None
+    """
     for ext in current_app.config['TEMPLATE_EXTENSIONS']:
+        # Check is lazy, and looks only for the first match
         if isfile(
             '{0}.{1}'.format(
                 site_path(path),
                 ext[2:]
             )
         ):
+            # return if a match is found.
+            # [2:] is because of the glob formate for denoting extension ()
             return '{0}.{1}'.format(
                 path,
                 ext[2:]
             )
-    # If no file is found, return None.
-    else:
-        return None
+    return None

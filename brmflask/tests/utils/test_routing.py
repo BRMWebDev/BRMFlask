@@ -52,9 +52,10 @@ def test_route_exists(config, app):
     config['ROUTES'].append('some/other/file')
     assert 'some/other/file' in config['ROUTES']
     assert routing.route_exists('Some/other/file') is None
+    # This test needs to be rewritten... it's too brittle.
     for r in config['ROUTES']:
         routed = routing.route_exists(r)
         if routed is None:
             pass
-        elif routed[-5:] == ".html":
-            assert routed == "{}.html".format(r)
+        elif routed[-7:] == ".htm.j2":
+            assert routed == "{}.htm.j2".format(r)

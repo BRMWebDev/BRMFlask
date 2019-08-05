@@ -1,4 +1,5 @@
-from flask_markdown import Markdown
+from brmflask.exts.markdown.markdown import Markdown
+
 
 def register_markdown(app):
     md = Markdown(

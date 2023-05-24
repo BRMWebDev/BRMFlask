@@ -36,7 +36,7 @@ decorating the extension class with :func:`extend`
 
 from __future__ import absolute_import
 from flask import Markup
-from jinja2 import evalcontextfilter, escape
+from jinja2 import pass_eval_context
 import markdown as md
 from markdown import (
     blockprocessors,
@@ -114,7 +114,7 @@ class Markdown(object):
         return Markup(self._instance.convert(stream))
 
     def __build_filter(self, app_auto_escape):
-        @evalcontextfilter
+        @pass_eval_context
         def markdown_filter(eval_ctx, stream):
             """
             Filter Jinja2 text.
